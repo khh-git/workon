@@ -16,6 +16,7 @@ auto import React,
 faster react refresh
 )
 vite.config plugins: [react()]
+vite-env.d.ts file in src
 
 npm install tailwindcss @tailwindcss/vite
 tsconfig module:'es2020', moduleResolution: 'bundler'
