@@ -1,17 +1,16 @@
+import { Button, Icon } from "@components";
 import { brandLogo } from "@assets";
 
 const Title = () => {
   return (
-    <figure className="flex gap-3 items-center transition-spacing ease-in-out duration-300 hover:gap-1">
-      <img
-        className="w-6 h-6"
-        src={brandLogo}
-        alt="a rounded square box with checklist items"
+    <Button style="flex gap-2 items-center p-1 rounded-sm hover:bg-gray-100">
+      <Icon
+        icon={brandLogo}
+        desc="a rounded square box with checklist items"
+        style="w-6 h-6"
       />
-      <figcaption className="text-lg font-medium text-gray-700">
-        Workon
-      </figcaption>
-    </figure>
+      <span className="text-lg font-medium text-gray-700">Workon</span>
+    </Button>
   );
 };
 

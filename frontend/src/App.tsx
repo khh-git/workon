@@ -1,12 +1,13 @@
 import { Fragment } from "react";
-import { NavBar, Title } from "@components";
+import { NavBar, NavMenu, Title } from "@components";
 
 const App = () => {
   return (
     <Fragment>
-      <header className="w-full p-4">
+      <header className="box-border w-full px-8 py-4">
         <NavBar>
           <Title />
+          <NavMenu />
         </NavBar>
       </header>
 
