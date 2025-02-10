@@ -1,12 +1,7 @@
-import { ReactNode } from "react";
-import styles from "./navbar.module.css";
+import { ReactChildProps } from "@lib/types";
 
-type NavBarProps = {
-  children?: ReactNode;
-};
-
-const NavBar = ({ children }: NavBarProps) => {
-  return <nav className="flex hover:cursor-pointer">{children}</nav>;
+const NavBar = ({ children }: ReactChildProps) => {
+  return <nav className="flex items-center">{children}</nav>;
 };
 
 export default NavBar;
