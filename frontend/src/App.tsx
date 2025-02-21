@@ -4,7 +4,7 @@ import { NavBar, SupportMenu, Title, Views } from "@components";
 const App = () => {
   return (
     <Fragment>
-      <header className="box-border w-full px-8 py-3">
+      <header className="box-border w-full px-2 py-2 md:px-6">
         <NavBar>
           <Title />
           <Views />
