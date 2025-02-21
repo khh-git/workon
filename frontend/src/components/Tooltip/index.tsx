@@ -7,7 +7,7 @@ const Tooltip = ({
   return (
     <div className="relative group">
       {children}
-      <span className="hidden px-1 py-px absolute top-[150%] left-1/2 -translate-x-1/2 text-xs bg-gray-600 text-white rounded-sm group-hover:block">
+      <span className="hidden px-1.5 py-px absolute top-[125%] left-1/2 -translate-x-1/2 text-xs bg-gray-600 text-white rounded-sm group-hover:block">
         {tooltip}
       </span>
     </div>

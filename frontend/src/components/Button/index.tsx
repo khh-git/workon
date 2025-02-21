@@ -1,12 +1,7 @@
 import { ButtonProps } from "@lib/types";
 
-const Button = ({
-  style = "p-1 rounded-sm hover:bg-gray-100",
-  children,
-}: ButtonProps) => {
-  return (
-    <button className={`hover:cursor-pointer ${style}`}>{children}</button>
-  );
+const Button = ({ style = "", children }: ButtonProps) => {
+  return <button className={`${style} button-default`}>{children}</button>;
 };
 
 export default Button;

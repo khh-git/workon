@@ -1,16 +1,18 @@
 import { Button, Icon, Tooltip } from "@components";
 import { helpIcon, searchIcon, userIcon } from "@assets";
 
-const NavMenu = () => {
+const SupportMenu = () => {
   return (
-    <div className="flex items-center ml-auto gap-6">
-      <Button style="flex gap-1 items-center px-2 border border-gray-200 rounded-3xl bg-gray-50">
-        <Icon
-          icon={searchIcon}
-          desc="a search icon with ctrl-k text"
-          style="w-3.5 h-3.5"
-        />
-        <span className="text-xs">Ctrl K</span>
+    <div className="flex items-center ml-auto gap-3">
+      <Button style="hover:bg-transparent">
+        <div className="flex gap-1 items-center px-2 py-0.5 border border-gray-200 rounded-full bg-gray-50">
+          <Icon
+            icon={searchIcon}
+            desc="a search icon with ctrl-k text"
+            style="w-4 h-4"
+          />
+          <span className="text-xs text-gray-500 font-medium">Ctrl K</span>
+        </div>
       </Button>
 
       <Tooltip tooltip="Help">
@@ -32,4 +34,4 @@ const NavMenu = () => {
   );
 };
 
-export default NavMenu;
+export default SupportMenu;
