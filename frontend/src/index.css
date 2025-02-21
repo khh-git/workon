@@ -1,4 +1,7 @@
 @import "tailwindcss";
 
-@theme {
+@layer components {
+  .button-default {
+    @apply p-1 rounded-sm hover:bg-gray-100 cursor-pointer h-8;
+  }
 }

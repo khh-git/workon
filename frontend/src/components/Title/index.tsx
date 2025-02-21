@@ -3,13 +3,13 @@ import { brandLogo } from "@assets";
 
 const Title = () => {
   return (
-    <Button style="flex gap-2 items-center p-1 rounded-sm hover:bg-gray-100">
+    <Button style="flex gap-2 items-center px-3 py-1">
       <Icon
         icon={brandLogo}
         desc="a rounded square box with checklist items"
-        style="w-6 h-6"
+        style="w-5 h-5"
       />
-      <span className="text-lg font-medium text-gray-700">Workon</span>
+      <span className="text-base font-bold text-gray-600">Workon</span>
     </Button>
   );
 };
