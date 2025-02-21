@@ -3,7 +3,7 @@ import { brandLogo } from "@assets";
 
 const Title = () => {
   return (
-    <Button style="flex gap-2 items-center px-3 py-1">
+    <Button style="flex gap-2 items-center px-2 sm:px-3 py-1">
       <Icon
         icon={brandLogo}
         desc="a rounded square box with checklist items"
