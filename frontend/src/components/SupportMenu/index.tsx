@@ -1,11 +1,11 @@
 import { Button, Icon, Tooltip } from "@components";
 import { helpIcon, searchIcon, userIcon } from "@assets";
-import "./SupportMenu.css";
+import styles from "./SupportMenu.module.css";
 
 const SupportMenu = () => {
   return (
     <div className="flex items-center ml-auto sm:gap-3">
-      <Button style="search-button">
+      <Button style={styles.searchButton}>
         <Icon icon={searchIcon} desc="a search icon with ctrl-k text" />
         <span className="text-xs text-gray-500 font-medium hidden lg:block">
           Ctrl K
@@ -20,7 +20,7 @@ const SupportMenu = () => {
 
       <Tooltip tooltip="Account">
         <Button>
-          <Icon icon={userIcon} desc="a user" />
+          <Icon icon={userIcon} desc="a user" style="w-5 h-5" />
         </Button>
       </Tooltip>
     </div>

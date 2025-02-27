@@ -10,6 +10,8 @@
   }
 
   .tooltip-default {
-    @apply hidden px-1.5 py-px absolute top-[125%] left-1/2 -translate-x-1/2 text-xs bg-gray-600 text-white font-semibold rounded-sm;
+    @apply hidden md:block;
+    @apply opacity-0 px-1.5 py-px absolute top-[115%] left-1/2 -translate-x-1/2 text-xs bg-gray-600 text-white font-semibold rounded-sm;
+    @apply transition-[top] duration-100 ease-in group-hover:opacity-100 group-hover:top-[125%];
   }
 }
