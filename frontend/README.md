@@ -20,3 +20,7 @@ vite-env.d.ts file in src
 
 npm install tailwindcss @tailwindcss/vite
 tsconfig module:'es2020', moduleResolution: 'bundler'
+
+npm i @types/node path-browserify vite-plugin-node-polyfills (
+To use @reference by alias in custom css files
+)

@@ -7,7 +7,7 @@ const Tooltip = ({
   return (
     <div className="relative group">
       {children}
-      <span className="group-hover:block tooltip-default">{tooltip}</span>
+      <span className="tooltip-default">{tooltip}</span>
     </div>
   );
 };
