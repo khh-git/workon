@@ -14,4 +14,8 @@
     @apply opacity-0 px-1.5 py-px absolute top-[115%] left-1/2 -translate-x-1/2 text-xs bg-gray-600 text-white font-semibold rounded-sm;
     @apply transition-[top] duration-100 ease-in group-hover:opacity-100 group-hover:top-[125%];
   }
+
+  .textarea-default {
+    @apply w-full px-2 py-1 resize-none leading-5 outline-0 rounded-sm overflow-hidden bg-white;
+  }
 }

@@ -18,6 +18,7 @@ export default defineConfig({
       "@assets": "/src/assets",
       "@lib": "/src/lib",
       "@root-css": path.resolve(__dirname, "src/index.css"),
+      "@contexts": "/src/contexts",
     },
   },
 });

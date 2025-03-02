@@ -1,9 +1,8 @@
-import { Fragment } from "react";
-import { NavBar, SupportMenu, Title, Views } from "@components";
+import { NavBar, SupportMenu, Title, WorkSpace, Views } from "@components";
 
 const App = () => {
   return (
-    <Fragment>
+    <div className="h-lvh">
       <header className="box-border w-full px-2 py-2 md:px-6">
         <NavBar>
           <Title />
@@ -12,10 +11,12 @@ const App = () => {
         </NavBar>
       </header>
 
-      <main></main>
+      <main className="box-border w-full px-2 py-2 md:px-6">
+        <WorkSpace />
+      </main>
 
       <footer></footer>
-    </Fragment>
+    </div>
   );
 };
 
