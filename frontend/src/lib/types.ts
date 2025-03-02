@@ -12,4 +12,10 @@ export interface IconProps {
 
 export interface ButtonProps extends ReactChildProps {
   style?: string;
+  onClick?: Function;
+}
+
+export interface TextAreaProps {
+  placeholder?: string;
+  style?: string;
 }
