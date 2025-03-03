@@ -1,4 +1,4 @@
-import { TextAreaProps } from "@lib/types";
+import { TextAreaProps } from "@typelib/components";
 import { useRef } from "react";
 
 const TextArea = ({ placeholder, style }: TextAreaProps) => {

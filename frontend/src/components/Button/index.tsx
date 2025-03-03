@@ -1,9 +1,8 @@
 import { MouseEvent } from "react";
-import { ButtonProps } from "@lib/types";
+import { ButtonProps } from "@typelib/components";
 
 const Button = ({ style = "", onClick = () => {}, children }: ButtonProps) => {
   const handleOnClick = (e: MouseEvent<HTMLButtonElement>) => {
-    // e.stopPropagation();
     onClick();
   };
 

@@ -1,5 +1,5 @@
-import { ReactChildProps } from "@lib/types";
 import { useContext, useEffect } from "react";
+import { ReactChildProps } from "@typelib/components";
 import { ClickAwayContext } from "@contexts/ClickAwayContext";
 
 const Modal = ({

@@ -1,4 +1,4 @@
-import { ReactChildProps } from "@lib/types";
+import { ReactChildProps } from "@typelib/components";
 
 const Tooltip = ({
   tooltip = "",

@@ -1,12 +1,15 @@
 import { createRoot } from "react-dom/client";
-// import { ContextProvider } from "@components";
-import AppProvider from "@contexts/AppProvider";
+import { Provider } from "react-redux";
+import { store } from "./store";
+import AppContextProvider from "@contexts/AppContextProvider";
 import App from "./App";
 import "./index.css";
 
 const root = createRoot(document.getElementById("root")!);
 root.render(
-  <AppProvider>
-    <App />
-  </AppProvider>
+  <Provider store={store}>
+    <AppContextProvider>
+      <App />
+    </AppContextProvider>
+  </Provider>
 );
