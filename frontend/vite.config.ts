@@ -19,6 +19,9 @@ export default defineConfig({
       "@lib": "/src/lib",
       "@root-css": path.resolve(__dirname, "src/index.css"),
       "@contexts": "/src/contexts",
+      "@redux": "/src/redux",
+      "@typelib": "/src/typelib",
+      "@hooks": "/src/hooks",
     },
   },
 });

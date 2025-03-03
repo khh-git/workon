@@ -24,3 +24,5 @@ tsconfig module:'es2020', moduleResolution: 'bundler'
 npm i @types/node path-browserify vite-plugin-node-polyfills (
 To use @reference by alias in custom css files
 )
+
+npm install @reduxjs/toolkit react-redux
