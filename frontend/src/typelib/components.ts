@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, Ref } from "react";
 
 export interface ReactChildProps {
   children?: ReactNode;
@@ -15,7 +15,11 @@ export interface ButtonProps extends ReactChildProps {
   onClick?: Function;
 }
 
+export interface TextRef {
+  getText: () => string | undefined;
+}
 export interface TextAreaProps {
+  ref?: Ref<TextRef> | undefined;
   placeholder?: string;
   style?: string;
 }
