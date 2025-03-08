@@ -1,7 +1,7 @@
 import { TextAreaProps } from "@typelib/components";
-import { useRef } from "react";
+import { useImperativeHandle, useRef } from "react";
 
-const TextArea = ({ placeholder, style }: TextAreaProps) => {
+const TextArea = ({ ref, placeholder, style }: TextAreaProps) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleTextChange = () => {
@@ -9,6 +9,18 @@ const TextArea = ({ placeholder, style }: TextAreaProps) => {
     textareaRef.current.style.height = "auto";
     textareaRef.current.style.height = textareaRef.current.scrollHeight + "px";
   };
+
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        getText() {
+          return textareaRef.current?.value;
+        },
+      };
+    },
+    []
+  );
 
   return (
     <textarea
