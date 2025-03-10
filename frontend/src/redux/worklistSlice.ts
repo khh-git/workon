@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { generateID } from "@utils";
 
 type NewList = {
-  id: number;
+  id: string;
   title: string;
 };
 
@@ -12,7 +13,7 @@ const worklistSlice = createSlice({
   initialState: init,
   reducers: {
     addNewList: (state, action) => {
-      state.push({ id: 1, title: action.payload });
+      state.push({ id: generateID(), title: action.payload });
     },
   },
 });

@@ -1,22 +1,20 @@
 import { useContext, useEffect } from "react";
-import { ReactChildProps } from "@typelib/components";
+import { ModalProps } from "@typelib/components";
 import { ClickAwayContext } from "@contexts/ClickAwayContext";
 
-const Modal = ({
-  open,
-  onClose,
-  children,
-}: ReactChildProps & { open: boolean; onClose: () => void }) => {
-  const { registerClickAwayCallback } = useContext(ClickAwayContext);
+const Modal = ({ open, onClose, children }: ModalProps) => {
+  const { addClickAwayCallback, removeClickAwayCallback } =
+    useContext(ClickAwayContext);
 
   useEffect(() => {
     if (open) {
-      registerClickAwayCallback(() => {
+      addClickAwayCallback(() => {
         onClose();
       });
-    } else {
-      registerClickAwayCallback(() => {});
     }
+    return () => {
+      removeClickAwayCallback();
+    };
   }, [open]);
 
   return (

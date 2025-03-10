@@ -7,8 +7,9 @@ import TextArea from "./TextArea";
 import Title from "./Title";
 import Tooltip from "./Tooltip";
 import Views from "./Views";
-import WorkListOpener from "./WorkListOpener";
+import WorkList from "./WorkList";
 import WorkSpace from "./WorkSpace";
+import WorkSpaceForm from "./WorkSpaceForm";
 
 export {
   Button,
@@ -20,6 +21,7 @@ export {
   Title,
   Tooltip,
   Views,
-  WorkListOpener,
+  WorkList,
   WorkSpace,
+  WorkSpaceForm,
 };

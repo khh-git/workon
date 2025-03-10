@@ -22,6 +22,7 @@ export default defineConfig({
       "@redux": "/src/redux",
       "@typelib": "/src/typelib",
       "@hooks": "/src/hooks",
+      "@utils": "/src/utils",
     },
   },
 });
