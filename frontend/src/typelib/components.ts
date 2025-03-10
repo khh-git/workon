@@ -23,3 +23,14 @@ export interface TextAreaProps {
   placeholder?: string;
   style?: string;
 }
+
+export type WSFormProps = {
+  labelStyle?: string;
+  formLabel: string;
+  onFormSubmit: () => void;
+} & ReactChildProps;
+
+export type ModalProps = {
+  open: boolean;
+  onClose: () => void;
+} & ReactChildProps;

@@ -1,27 +1,31 @@
 import { createContext, useRef } from "react";
-import { ReactChildProps } from "@lib/types";
+import { ReactChildProps } from "@typelib/components";
+import { Callback, ClickAwayInit } from "@typelib/contexts";
 
-type Init = {
-  registerClickAwayCallback: (callback: () => void) => void;
+const init: ClickAwayInit = {
+  addClickAwayCallback: () => {},
+  removeClickAwayCallback: () => {},
 };
 
-const init: Init = {
-  registerClickAwayCallback: () => {},
-};
 const ClickAwayContext = createContext(init);
 
 const ClickAwayProvider = ({ children }: ReactChildProps) => {
   const clickAwayCallback = useRef<() => void | null>(null);
 
-  const registerClickAwayCallback = (callback: () => void) => {
+  const addClickAwayCallback = (callback: Callback) => {
     clickAwayCallback.current = callback;
+  };
+  const removeClickAwayCallback = () => {
+    clickAwayCallback.current = null;
   };
   const handleOnClick = () => {
     clickAwayCallback.current?.();
   };
 
   return (
-    <ClickAwayContext.Provider value={{ registerClickAwayCallback }}>
+    <ClickAwayContext.Provider
+      value={{ addClickAwayCallback, removeClickAwayCallback }}
+    >
       <div onClick={handleOnClick}>{children}</div>
     </ClickAwayContext.Provider>
   );
