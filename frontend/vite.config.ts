@@ -23,6 +23,7 @@ export default defineConfig({
       "@typelib": "/src/typelib",
       "@hooks": "/src/hooks",
       "@utils": "/src/utils",
+      "@pages": "/src/pages",
     },
   },
 });
