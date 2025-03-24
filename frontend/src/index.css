@@ -6,11 +6,15 @@
   }
 
   .icon-default {
-    @apply w-4 h-4;
+    @apply w-5 h-5;
+  }
+
+  .title-default {
+    @apply text-xl font-semibold text-gray-600;
   }
 
   .tooltip-default {
-    @apply hidden md:block;
+    @apply hidden md:block pointer-events-none;
     @apply opacity-0 px-1.5 py-px absolute top-[115%] left-1/2 -translate-x-1/2 text-xs bg-gray-600 text-white font-semibold rounded-sm;
     @apply transition-[top] duration-100 ease-in group-hover:opacity-100 group-hover:top-[125%];
   }

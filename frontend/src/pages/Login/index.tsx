@@ -1,16 +1,22 @@
-import { Button, Icon } from "@components";
-import { brandLogo, exclaimation, fb, google, ms, twitter } from "@assets";
+import { Button, Icon, Title } from "@components";
+import {
+  exclaimationIcon,
+  fbLogo,
+  googleLogo,
+  msLogo,
+  twitterLogo,
+} from "@assets";
 
 const Login = () => {
   return (
     <div className="min-h-fit h-dvh flex flex-col items-center justify-center bg-gray-50/50 *:w-68 xl:*:w-1/5">
-      <div className="p-4 flex justify-center items-center gap-2">
-        <Icon icon={brandLogo} desc="brand logo" style="w-6 h-6" />
-        <span className="text-xl font-semibold text-gray-600">Workon</span>
+      <div className="p-3">
+        <Title logoStyle="w-6 h-6" />
       </div>
-      <div className="p-4 flex flex-col gap-4 justify-center shadow-[0px_4px_10px_rgba(0,0,0,0.2)] bg-linear-to-br from-blue-300/65 to-gray-400/65 rounded-xl">
+
+      <div className=" p-4 flex flex-col gap-4 justify-center shadow-[0px_4px_10px_rgba(0,0,0,0.2)] bg-linear-to-br from-blue-300/65 to-gray-400/65 rounded-xl">
         <div className="flex justify-center items-center text-sm gap-2 text-red-500/90 font-semibold">
-          <Icon icon={exclaimation} desc="red exclaimation triangle" />
+          <Icon icon={exclaimationIcon} desc="red exclaimation triangle" />
           <span>Incorrect Email/Password</span>
         </div>
         <input
@@ -39,18 +45,18 @@ const Login = () => {
         <span className="text-sm font-semibold ">or Get In with</span>
         <hr className="w-5 mt-1 " />
       </div>
-      <div className="p-4 flex items-center justify-between">
+      <div className="py-0 px-4 flex items-center justify-between">
         <Button style="cursor-pointer bg-transparent">
-          <Icon icon={google} desc="google" style="w-5 h-5" />
+          <Icon icon={googleLogo} desc="google" style="w-5 h-5" />
         </Button>
         <Button style="cursor-pointer bg-transparent">
-          <Icon icon={ms} desc="ms" style="w-5 h-5" />
+          <Icon icon={msLogo} desc="ms" style="w-5 h-5" />
         </Button>
         <Button style="cursor-pointer bg-transparent">
-          <Icon icon={twitter} desc="twitter" style="w-5 h-5" />
+          <Icon icon={twitterLogo} desc="twitter" style="w-5 h-5" />
         </Button>
         <Button style="cursor-pointer bg-transparent">
-          <Icon icon={fb} desc="facebook" style="w-5 h-5" />
+          <Icon icon={fbLogo} desc="facebook" style="w-5 h-5" />
         </Button>
       </div>
       <div className="p-4 flex gap-2 justify-center items-center text-gray-500">

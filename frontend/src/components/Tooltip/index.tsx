@@ -5,7 +5,7 @@ const Tooltip = ({
   children,
 }: ReactChildProps & { tooltip: string }) => {
   return (
-    <div className="relative group">
+    <div className="relative group flex h-fit">
       {children}
       <span className="tooltip-default">{tooltip}</span>
     </div>

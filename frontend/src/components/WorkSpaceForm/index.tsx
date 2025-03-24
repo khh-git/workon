@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Icon, Modal } from "@components";
-import { crossCircle, plusCircle, tickCircle } from "@assets";
+import { crossCircleIcon, plusCircleIcon, tickCircleIcon } from "@assets";
 import { WSFormProps } from "@typelib/components";
 import styles from "./WorkSpaceForm.module.css";
 
@@ -27,7 +27,7 @@ const WorkSpaceForm = ({
     <>
       {!showForm && (
         <Button style={`${styles.addList} ${labelStyle}`} onClick={fillForm}>
-          <Icon icon={plusCircle} desc="plus circled" />
+          <Icon icon={plusCircleIcon} desc="plus circled" />
           <span className="text-sm font-semibold text-gray-600">
             {formLabel}
           </span>
@@ -38,10 +38,14 @@ const WorkSpaceForm = ({
           {children}
           <div className="flex items-center gap-5">
             <Button style="bg-transparent" onClick={onSubmit}>
-              <Icon icon={tickCircle} desc="tick circled" style="w-5 h-5" />
+              <Icon icon={tickCircleIcon} desc="tick circled" style="w-5 h-5" />
             </Button>
             <Button style="bg-transparent" onClick={closeForm}>
-              <Icon icon={crossCircle} desc="cross circled" style="w-5 h-5" />
+              <Icon
+                icon={crossCircleIcon}
+                desc="cross circled"
+                style="w-5 h-5"
+              />
             </Button>
           </div>
         </div>

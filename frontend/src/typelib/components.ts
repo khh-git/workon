@@ -15,22 +15,27 @@ export interface ButtonProps extends ReactChildProps {
   onClick?: Function;
 }
 
-export interface TextRef {
-  getText: () => string | undefined;
-}
+export type ModalProps = {
+  open: boolean;
+  onClose: () => void;
+} & ReactChildProps;
+
+export type TitleProps = {
+  logoStyle?: string;
+  titleStyle?: string;
+};
+
 export interface TextAreaProps {
   ref?: Ref<TextRef> | undefined;
   placeholder?: string;
   style?: string;
+}
+export interface TextRef {
+  getText: () => string | undefined;
 }
 
 export type WSFormProps = {
   labelStyle?: string;
   formLabel: string;
   onFormSubmit: () => void;
-} & ReactChildProps;
-
-export type ModalProps = {
-  open: boolean;
-  onClose: () => void;
 } & ReactChildProps;

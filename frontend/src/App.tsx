@@ -13,7 +13,7 @@ const App = () => {
           <div className="h-dvh flex flex-col">
             <header className="box-border w-full px-2 py-2 md:px-6">
               <NavBar>
-                <Title />
+                <Title titleStyle="text-base font-bold text-gray-600" />
                 <Views />
                 <SupportMenu />
               </NavBar>
