@@ -1,31 +1,31 @@
 import brandLogo from "./logo.svg";
-import crossCircle from "./cross-circle.svg";
+import crossCircleIcon from "./cross-circle.svg";
 import downIcon from "./down-arrow.svg";
-import exclaimation from "./exclamation-triangle.svg";
-import fb from "./facebook.png";
+import exclaimationIcon from "./exclamation-triangle.svg";
+import fbLogo from "./facebook.png";
 import helpIcon from "./help.svg";
-import google from "./google.png";
-import ms from "./microsoft.png";
-import plusCircle from "./plus-circle.svg";
+import googleLogo from "./google.png";
+import msLogo from "./microsoft.png";
+import plusCircleIcon from "./plus-circle.svg";
 import searchIcon from "./search.svg";
-import tickCircle from "./tick-circle.svg";
-import twitter from "./twitter.png";
+import tickCircleIcon from "./tick-circle.svg";
+import twitterLogo from "./twitter.png";
 import upIcon from "./up-arrow.svg";
 import userIcon from "./user.png";
 
 export {
   brandLogo,
-  crossCircle,
+  crossCircleIcon,
   downIcon,
-  exclaimation,
-  fb,
+  exclaimationIcon,
+  fbLogo,
   helpIcon,
-  google,
-  ms,
-  plusCircle,
+  googleLogo,
+  msLogo,
+  plusCircleIcon,
   searchIcon,
-  tickCircle,
-  twitter,
+  tickCircleIcon,
+  twitterLogo,
   upIcon,
   userIcon,
 };
