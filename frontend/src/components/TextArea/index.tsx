@@ -1,29 +1,25 @@
+import { ChangeEvent, useRef } from "react";
 import { TextAreaProps } from "@typelib/components";
-import { useImperativeHandle, useRef } from "react";
 
-const TextArea = ({ ref, placeholder, style }: TextAreaProps) => {
+const TextArea = ({
+  value = "",
+  onChange = () => {},
+  placeholder,
+  style,
+}: TextAreaProps) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  const handleTextChange = () => {
+  const handleTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    onChange(e.target.value);
+
     if (!textareaRef.current) return;
     textareaRef.current.style.height = "auto";
     textareaRef.current.style.height = textareaRef.current.scrollHeight + "px";
   };
 
-  useImperativeHandle(
-    ref,
-    () => {
-      return {
-        getText() {
-          return textareaRef.current?.value;
-        },
-      };
-    },
-    []
-  );
-
   return (
     <textarea
+      value={value}
       spellCheck={false}
       ref={textareaRef}
       onChange={handleTextChange}

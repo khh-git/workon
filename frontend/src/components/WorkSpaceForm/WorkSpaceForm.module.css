@@ -1,5 +1,0 @@
-@reference '@root-css';
-
-.addList {
-  @apply flex gap-3 items-center;
-}
