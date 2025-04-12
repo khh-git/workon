@@ -1,0 +1,10 @@
+@reference '@root-css';
+
+.container {
+  @apply flex justify-between bg-white py-1 pl-3 pr-1 rounded-md;
+  @apply inset-ring-1 inset-ring-gray-300 has-focus:inset-ring-2 has-focus:inset-ring-blue-500;
+}
+
+.ip {
+  @apply h-6 text-sm grow outline-none placeholder:text-sm placeholder:font-semibold;
+}

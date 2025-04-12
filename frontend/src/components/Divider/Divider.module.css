@@ -1,0 +1,10 @@
+@reference '@root-css';
+
+.container {
+  @apply p-4 text-gray-600 flex items-center justify-center text-center before:mr-1 after:ml-1;
+
+  &::before,
+  &::after {
+    @apply inline-block w-5 border-b-gray-500 border-b-1 content-[""] mt-1;
+  }
+}

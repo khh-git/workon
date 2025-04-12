@@ -1,6 +1,6 @@
-import { ReactChildProps } from "@typelib/components";
+import { ComponentCommonProps } from "@typelib/components";
 
-const NavBar = ({ children }: ReactChildProps) => {
+const NavBar = ({ children }: ComponentCommonProps) => {
   return <nav className="flex items-center">{children}</nav>;
 };
 

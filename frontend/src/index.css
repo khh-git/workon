@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+header {
+  @apply box-border w-full px-2 py-2 md:px-6;
+}
+
+main {
+  @apply w-full p-2 h-full md:px-6;
+}
+
 @layer components {
   .button-default {
     @apply p-1 rounded-sm hover:bg-gray-100 h-8;
@@ -7,6 +15,10 @@
 
   .icon-default {
     @apply w-5 h-5;
+  }
+
+  .logotext-default {
+    @apply flex items-center gap-2;
   }
 
   .title-default {

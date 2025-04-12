@@ -1,5 +1,5 @@
 import { createContext, useRef } from "react";
-import { ReactChildProps } from "@typelib/components";
+import { ComponentCommonProps } from "@typelib/components";
 import { Callback, ClickAwayInit } from "@typelib/contexts";
 
 const init: ClickAwayInit = {
@@ -9,7 +9,7 @@ const init: ClickAwayInit = {
 
 const ClickAwayContext = createContext(init);
 
-const ClickAwayProvider = ({ children }: ReactChildProps) => {
+const ClickAwayProvider = ({ children }: ComponentCommonProps) => {
   const clickAwayCallback = useRef<() => void | null>(null);
 
   const addClickAwayCallback = (callback: Callback) => {

@@ -1,3 +1,5 @@
-import Login from "./Login";
+import GetIn from "./GetIn";
+import Join from "./Join";
+import WorkSpace from "./WorkSpace";
 
-export { Login };
+export { GetIn, Join, WorkSpace };

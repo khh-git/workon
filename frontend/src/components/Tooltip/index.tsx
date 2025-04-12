@@ -1,9 +1,6 @@
-import { ReactChildProps } from "@typelib/components";
+import { TooltipProps } from "@typelib/components";
 
-const Tooltip = ({
-  tooltip = "",
-  children,
-}: ReactChildProps & { tooltip: string }) => {
+const Tooltip = ({ tooltip = "", children }: TooltipProps) => {
   return (
     <div className="relative group flex h-fit">
       {children}
