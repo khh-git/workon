@@ -1,18 +1,19 @@
-import { createContext, useRef } from "react";
+import { useRef } from "react";
+import { useCreateContext } from "@hooks";
 import { ComponentCommonProps } from "@typelib/components";
-import { Callback, ClickAwayInit } from "@typelib/contexts";
+import { TCallback, TClickAwayInit } from "@typelib/contexts";
 
-const init: ClickAwayInit = {
+const init: TClickAwayInit = {
   addClickAwayCallback: () => {},
   removeClickAwayCallback: () => {},
 };
 
-const ClickAwayContext = createContext(init);
+const ClickAwayContext = useCreateContext(init);
 
 const ClickAwayProvider = ({ children }: ComponentCommonProps) => {
   const clickAwayCallback = useRef<() => void | null>(null);
 
-  const addClickAwayCallback = (callback: Callback) => {
+  const addClickAwayCallback = (callback: TCallback) => {
     clickAwayCallback.current = callback;
   };
   const removeClickAwayCallback = () => {

@@ -1,16 +1,32 @@
+import { useContext, useReducer, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router";
 import { Box, Button, Divider, Input, LogoText, TextField } from "@components";
 import { brandLogo, exclaimationIcon } from "@assets";
-import { Link } from "react-router";
 import { newUserCredInit, newUserCredReducer } from "./newUserCredReducer";
-import { useReducer } from "react";
+import { AuthContext } from "@contexts/AuthContext";
+import { EStatus } from "@typelib/contexts";
 
 const Join = () => {
-  const [newUserCreds, dispatch] = useReducer(
+  const [{ email, username, password }, dispatch] = useReducer(
     newUserCredReducer,
     newUserCredInit
   );
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [isPasswordMismatch, setIsPasswordMismatch] = useState(false);
+  const { signUpStatus, signUp } = useContext(AuthContext);
+  const signUpCheck = useRef(false);
+  const navigate = useNavigate();
 
-  const { email, username, password, confirmPassword } = newUserCreds;
+  const handleUserSignUp = () => {
+    if (password !== confirmPassword) {
+      setIsPasswordMismatch(true);
+      return;
+    }
+
+    setIsPasswordMismatch(false);
+    signUpCheck.current = true;
+    signUp({ email, username, password }, () => navigate("/getin"));
+  };
 
   return (
     <>
@@ -44,11 +60,13 @@ const Join = () => {
                   dispatch({ type: "USERNAME", payload: text })
                 }
               />
-              <LogoText
-                icon={exclaimationIcon}
-                text="Username already taken"
-                textStyle="text-sm text-red-500 font-semibold"
-              />
+              {signUpCheck.current && signUpStatus === EStatus.Failed && (
+                <LogoText
+                  icon={exclaimationIcon}
+                  text="Username already taken"
+                  textStyle="text-sm text-red-500 font-semibold"
+                />
+              )}
             </Box>
 
             <Input
@@ -63,22 +81,20 @@ const Join = () => {
                 type="password"
                 placeholder="confirm password"
                 value={confirmPassword}
-                onChange={(text) =>
-                  dispatch({ type: "CONFIRM_PASSWORD", payload: text })
-                }
+                onChange={(text) => setConfirmPassword(text ?? "")}
               />
-              <LogoText
-                icon={exclaimationIcon}
-                text="Password mismatch"
-                textStyle="text-sm text-red-500 font-semibold"
-              />
+              {isPasswordMismatch && (
+                <LogoText
+                  icon={exclaimationIcon}
+                  text="Password mismatch"
+                  textStyle="text-sm text-red-500 font-semibold"
+                />
+              )}
             </Box>
 
             <Button
-              onClick={() => {
-                console.log(newUserCreds);
-              }}
-              style="w-full h-fit rounded-md py-0.5 cursor-pointer shadow-md bg-amber-100 font-semibold text-md text-gray-600 "
+              onClick={handleUserSignUp}
+              style="w-full h-fit rounded-md py-0.5 cursor-pointer shadow-md bg-amber-100 font-semibold text-md text-gray-700 "
             >
               <TextField text="Join" />
             </Button>

@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { useReducer } from "react";
+import { useContext, useEffect, useReducer, useRef } from "react";
 import { credInit, credReducer } from "./credReducer";
 import {
   Button,
@@ -18,10 +18,19 @@ import {
   msLogo,
   twitterLogo,
 } from "@assets";
+import { AuthContext } from "@contexts/AuthContext";
+import { EStatus } from "@typelib/contexts";
 
 const GetIn = () => {
   const [creds, dispatch] = useReducer(credReducer, credInit);
   const { username, password } = creds;
+  const { loginStatus, login } = useContext(AuthContext);
+  const loginCheck = useRef(false);
+
+  const handleUserLogin = () => {
+    loginCheck.current = true;
+    login(creds);
+  };
 
   return (
     <>
@@ -41,14 +50,17 @@ const GetIn = () => {
 
           <Box style=" p-4 flex flex-col gap-4 justify-center shadow-[0px_4px_10px_rgba(0,0,0,0.2)] bg-linear-to-br from-blue-300/65 to-gray-400/65 rounded-xl">
             <Box>
-              <Box style="flex justify-center">
-                <LogoText
-                  style="pb-1"
-                  icon={exclaimationIcon}
-                  text="Incorrect Email/Password"
-                  textStyle="text-sm text-red-500 font-semibold"
-                />
-              </Box>
+              {loginCheck.current && loginStatus === EStatus.Failed && (
+                <Box style="flex justify-center">
+                  <LogoText
+                    style="pb-1"
+                    icon={exclaimationIcon}
+                    text="Invalid username/password"
+                    textStyle="text-sm text-red-500 font-semibold"
+                  />
+                </Box>
+              )}
+
               <Input
                 placeholder="username"
                 value={username}
@@ -66,10 +78,8 @@ const GetIn = () => {
             />
 
             <Button
-              onClick={() => {
-                console.log(creds);
-              }}
-              style="w-full h-fit rounded-md py-0.5 cursor-pointer shadow-md bg-amber-100 font-semibold text-md text-gray-600 "
+              onClick={handleUserLogin}
+              style="w-full h-fit rounded-md py-0.5 cursor-pointer shadow-md bg-amber-100 font-semibold text-md text-gray-700 "
             >
               <TextField text="GetIn" />
             </Button>

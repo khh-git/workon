@@ -2,7 +2,6 @@ type S = {
   email: string;
   username: string;
   password: string;
-  confirmPassword: string;
 };
 type A = {
   type: string;
@@ -13,11 +12,10 @@ const newUserCredInit = {
   email: "",
   username: "",
   password: "",
-  confirmPassword: "",
 };
 
 const newUserCredReducer = (state: S, action: A): S => {
-  const { email, username, password, confirmPassword } = state;
+  const { email, username, password } = state;
 
   switch (action.type) {
     case "EMAIL":
@@ -34,11 +32,6 @@ const newUserCredReducer = (state: S, action: A): S => {
       return {
         ...state,
         password: action.payload ?? password,
-      };
-    case "CONFIRM_PASSWORD":
-      return {
-        ...state,
-        confirmPassword: action.payload ?? confirmPassword,
       };
     default:
       return state;
