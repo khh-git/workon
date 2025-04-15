@@ -44,7 +44,7 @@ userRouter.post("/getin", async (req, res, next) => {
   res.send({ token: jwtToken, message: "login sucessfull" });
 });
 
-userRouter.post("/profile", isLoggedIn, async (req, res, next) => {
+userRouter.get("/profile", isLoggedIn, async (req, res, next) => {
   const { userId } = req as IAuthorizationRequest;
   const user = await findUserById(userId);
   if (!user) {
