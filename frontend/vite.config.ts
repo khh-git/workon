@@ -26,4 +26,7 @@ export default defineConfig({
       "@pages": "/src/pages",
     },
   },
+  server: {
+    port: 3000,
+  },
 });

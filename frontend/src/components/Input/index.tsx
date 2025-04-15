@@ -23,6 +23,8 @@ const Input = ({
     }
   };
   const clearText = () => {
+    console.log("clicked");
+
     if (isControlled) {
       onChange("");
     } else {
@@ -33,10 +35,10 @@ const Input = ({
   };
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} group`}>
       <input
         ref={ipRef}
-        className={styles.ip}
+        className={`${styles.ip}`}
         type={type}
         value={currentVal}
         onChange={handleText}
@@ -44,7 +46,10 @@ const Input = ({
         placeholder={placeholder}
       />
       {currentVal != "" && (
-        <button className="cursor-pointer" onClick={clearText}>
+        <button
+          className="cursor-pointer hidden group-focus-within:block"
+          onClick={clearText}
+        >
           <img className="w-6 h-6" src={cross} alt="cross" />
           {/* <img className="w-6 h-6 animate-spin" src={loader} alt="loader" /> */}
         </button>
