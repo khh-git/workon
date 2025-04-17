@@ -1,7 +1,8 @@
-import { NavBar, SupportMenu, Title, Views } from "@components";
+import { LogoText, NavBar, SupportMenu, Views } from "@components";
 import { useAppSelector, useAppDispatch } from "@hooks";
 import { addNewList } from "@redux/actions";
 import { EntrySection, WorkList } from "./components";
+import { brandLogo } from "@assets";
 
 const WorkSpace = () => {
   const worklists = useAppSelector((state) => state.worklists);
@@ -15,14 +16,19 @@ const WorkSpace = () => {
     <>
       <header>
         <NavBar>
-          <Title titleStyle="text-base font-bold text-gray-600" />
-          <Views />
+          <LogoText
+            icon={brandLogo}
+            iconStyle="w-5.5 h-5.5"
+            text="Workon"
+            textStyle="text-base font-bold text-gray-600"
+          />
+          {/* <Views /> */}
           <SupportMenu />
         </NavBar>
       </header>
 
       <main>
-        <div className="flex gap-3 *:w-[245px] **:h-fit *:px-2 *:shrink-0 h-full overflow-x-auto overflow-y-hidden">
+        <div className="flex gap-4 *:w-[245px] **:h-fit *:px-2 *:shrink-0 h-full overflow-x-auto overflow-y-hidden">
           {worklists.map(({ id, title }) => (
             <WorkList key={id} title={title} cards={[]} />
           ))}

@@ -1,5 +1,6 @@
 import Button from "./Button";
 import Box from "./Box";
+import Card from "./Card";
 import Divider from "./Divider";
 import Icon from "./Icon";
 import Input from "./Input";
@@ -10,13 +11,13 @@ import SupportMenu from "./SupportMenu";
 import TextArea from "./TextArea";
 import TextEntryForm from "./TextEntryForm";
 import TextField from "./TextField";
-import Title from "./Title";
 import Tooltip from "./Tooltip";
 import Views from "./Views";
 
 export {
   Button,
   Box,
+  Card,
   Divider,
   Icon,
   Input,
@@ -27,7 +28,6 @@ export {
   TextArea,
   TextEntryForm,
   TextField,
-  Title,
   Tooltip,
   Views,
 };
