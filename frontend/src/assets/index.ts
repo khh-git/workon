@@ -1,6 +1,8 @@
 import brandLogo from "./logo.svg";
+import commentsIcon from "./comments.svg";
 import cross from "./cross.svg";
 import crossCircleIcon from "./cross-circle.svg";
+import descriptionIcon from "./description.svg";
 import downIcon from "./down-arrow.svg";
 import exclaimationIcon from "./exclamation-triangle.svg";
 import fbLogo from "./facebook.png";
@@ -17,8 +19,10 @@ import userIcon from "./user.png";
 
 export {
   brandLogo,
+  commentsIcon,
   cross,
   crossCircleIcon,
+  descriptionIcon,
   downIcon,
   exclaimationIcon,
   fbLogo,

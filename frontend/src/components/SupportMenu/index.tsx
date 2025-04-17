@@ -5,7 +5,7 @@ import styles from "./SupportMenu.module.css";
 const SupportMenu = () => {
   return (
     <div className="flex items-center ml-auto sm:gap-3">
-      <Button style={styles.searchButton}>
+      {/* <Button style={styles.searchButton}>
         <Icon
           icon={searchIcon}
           desc="a search icon with ctrl-k text"
@@ -20,7 +20,7 @@ const SupportMenu = () => {
         <Button>
           <Icon icon={helpIcon} desc="a question mark circled around" />
         </Button>
-      </Tooltip>
+      </Tooltip> */}
 
       <Tooltip tooltip="Account">
         <Button>
