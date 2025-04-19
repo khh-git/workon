@@ -40,7 +40,7 @@ userRouter.post("/getin", (req, res, next) => __awaiter(void 0, void 0, void 0, 
     const jwtToken = (0, jsonwebtoken_1.sign)({ userId: user._id }, JWT_SECRET);
     res.send({ token: jwtToken, message: "login sucessfull" });
 }));
-userRouter.post("/profile", auth_1.isLoggedIn, (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+userRouter.get("/profile", auth_1.isLoggedIn, (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { userId } = req;
     const user = yield (0, User_1.findUserById)(userId);
     if (!user) {
