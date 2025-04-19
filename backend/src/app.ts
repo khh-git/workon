@@ -1,6 +1,6 @@
 import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
-import userRouter from "./routes/user";
+import { userRouter, listRouter } from "./routes";
 
 const app = express();
 
@@ -15,6 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(userRouter);
+app.use(listRouter);
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   const { message = "Internal Error", status = 500 } = err;
