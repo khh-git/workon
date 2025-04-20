@@ -4,9 +4,11 @@ import Card from "./Card";
 import Divider from "./Divider";
 import Icon from "./Icon";
 import Input from "./Input";
+import Loader from "./Loader";
 import LogoText from "./LogoText";
 import Modal from "./Modal";
 import NavBar from "./NavBar";
+import PrivateRoute from "./PrivateRoute";
 import SupportMenu from "./SupportMenu";
 import TextArea from "./TextArea";
 import TextEntryForm from "./TextEntryForm";
@@ -21,9 +23,11 @@ export {
   Divider,
   Icon,
   Input,
+  Loader,
   LogoText,
   Modal,
   NavBar,
+  PrivateRoute,
   SupportMenu,
   TextArea,
   TextEntryForm,

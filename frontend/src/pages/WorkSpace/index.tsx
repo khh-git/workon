@@ -1,15 +1,37 @@
+import { useContext, useEffect, useState } from "react";
 import { LogoText, NavBar, SupportMenu, Views } from "@components";
-import { useAppSelector, useAppDispatch } from "@hooks";
-import { addNewList } from "@redux/actions";
 import { EntrySection, WorkList } from "./components";
 import { brandLogo } from "@assets";
+import { createList, getLists } from "@api/list";
+import { AuthContext } from "@contexts/AuthContext";
+
+type TList = {
+  _id: string;
+  title: string;
+};
 
 const WorkSpace = () => {
-  const worklists = useAppSelector((state) => state.worklists);
-  const dispatch = useAppDispatch();
+  const { user, isLoggedIn } = useContext(AuthContext);
+  const [workLists, setWorkLists] = useState<TList[]>([]);
 
-  const addList = (text: string | undefined) => {
-    if (text != undefined && text != "") dispatch(addNewList(text));
+  useEffect(() => {
+    if (isLoggedIn) {
+      getLists(user.userId, (responce) => {
+        const { data } = responce;
+        setWorkLists(data);
+      });
+    }
+  }, [isLoggedIn]);
+
+  const addList = (text: string) => {
+    if (text != "" && isLoggedIn) {
+      createList(text, user.userId, (response) => {
+        getLists(user.userId, (responce) => {
+          const { data } = responce;
+          setWorkLists(data);
+        });
+      });
+    }
   };
 
   return (
@@ -29,16 +51,17 @@ const WorkSpace = () => {
 
       <main>
         <div className="flex gap-4 *:w-[245px] **:h-fit *:px-2 *:shrink-0 h-full overflow-x-auto overflow-y-hidden">
-          {worklists.map(({ id, title }) => (
-            <WorkList key={id} title={title} cards={[]} />
-          ))}
+          {workLists &&
+            workLists.map(({ _id, title }: TList) => (
+              <WorkList key={_id} title={title} cards={[]} />
+            ))}
           <EntrySection
             entryButtonLabel="Add a List"
             entryButtonStyle="bg-gray-200 px-2 shadow"
             entryFormStyle="shadow"
             textAreaPlaceholder="Enter List Name..."
             formTextAreaStyle=" placeholder:font-semibold"
-            onFormSubmit={addList}
+            onFormSubmit={(text) => addList(text ?? "")}
           />
         </div>
       </main>
