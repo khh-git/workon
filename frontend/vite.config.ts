@@ -24,6 +24,7 @@ export default defineConfig({
       "@hooks": "/src/hooks",
       "@utils": "/src/utils",
       "@pages": "/src/pages",
+      "@api": "/src/api",
     },
   },
   server: {

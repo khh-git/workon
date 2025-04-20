@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { AxiosResponse } from "axios";
 import { useCreateContext } from "@hooks";
 import { EStatus, TAuthInit } from "@typelib/contexts";
 import { ComponentCommonProps } from "@typelib/components";
 import { setItemInLocalStorage, getItemInLocalStorage } from "@utils";
+import { userLogin, userSignup, fetchUser } from "@api/user";
+import { useNavigate } from "react-router";
 
 const init: TAuthInit = {
   isLoggedIn: false,
@@ -22,60 +24,68 @@ const AuthProvider = ({ children }: ComponentCommonProps) => {
     isLoggedIn: false,
     loginStatus: EStatus.None,
   });
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchUserProfile();
   }, []);
 
-  const signUp = async (newUserCreds: {}, successCallback: () => void) => {
-    try {
-      const responce = await axios.post(
-        "http://localhost:5000/join",
-        newUserCreds
-      );
-      console.log(responce);
-
-      setSignUpStatus(EStatus.Success);
-      successCallback();
-    } catch (err) {
-      console.log(err);
-      setSignUpStatus(EStatus.Failed);
-    }
+  const signUp = async (newUserCreds: {}, onSuccess: () => void) => {
+    userSignup(
+      newUserCreds,
+      (responce: AxiosResponse) => {
+        setSignUpStatus(EStatus.Success);
+        onSuccess();
+      },
+      (error: unknown) => {
+        setSignUpStatus(EStatus.Failed);
+      }
+    );
   };
 
-  const login = async (creds: {}) => {
-    try {
-      const response = await axios.post("http://localhost:5000/getin", creds);
-      console.log(response);
-      setItemInLocalStorage("token", `Bearer ${response.data.token}`);
-      fetchUserProfile();
-    } catch (err) {
-      console.log("Error: ", err);
-      setLoginInfo({ ...loginInfo, loginStatus: EStatus.Failed });
-    }
+  const login = async (creds: {}, onSuccess: () => void) => {
+    userLogin(
+      creds,
+      (responce: AxiosResponse) => {
+        const { data } = responce;
+        setItemInLocalStorage("token", `Bearer ${data.token}`);
+        fetchUserProfile();
+      },
+      (error: unknown) => {
+        setLoginInfo({ ...loginInfo, loginStatus: EStatus.Failed });
+      }
+    );
   };
+
+  const logout = () => {};
 
   const fetchUserProfile = async () => {
-    try {
-      const response = await axios.get("http://localhost:5000/profile", {
-        headers: {
-          authorization: getItemInLocalStorage("token"),
+    const token = getItemInLocalStorage("token");
+    if (token) {
+      fetchUser(
+        token,
+        (response: AxiosResponse) => {
+          const { data } = response;
+          setUser(data);
+          setLoginInfo({
+            ...loginInfo,
+            isLoggedIn: true,
+            loginStatus: EStatus.Success,
+          });
+          navigate("/");
         },
-      });
-      console.log(response);
-
-      setLoginInfo({
-        ...loginInfo,
-        isLoggedIn: true,
-        loginStatus: EStatus.Success,
-      });
-    } catch (err) {
-      console.log("Error: ", err);
+        (error: unknown) => {
+          setLoginInfo({ ...loginInfo, loginStatus: EStatus.Failed });
+        }
+      );
     }
   };
 
   return (
-    <AuthContext.Provider value={{ signUpStatus, ...loginInfo, signUp, login }}>
+    <AuthContext.Provider
+      value={{ user, signUpStatus, ...loginInfo, signUp, login, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );

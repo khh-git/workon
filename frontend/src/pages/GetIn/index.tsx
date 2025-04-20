@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { useContext, useEffect, useReducer, useRef } from "react";
+import { useContext, useReducer, useRef } from "react";
 import { credInit, credReducer } from "./credReducer";
 import {
   Button,

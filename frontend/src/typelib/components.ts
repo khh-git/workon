@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { EStatus } from "@typelib/contexts";
 
 export type ComponentCommonProps = {
   children?: ReactNode;
@@ -56,6 +57,11 @@ export type ModalProps = ComponentType<{
   open: boolean;
   onClose: () => void;
 }>;
+
+export type PrivateRouteProps = {
+  isAuthenticated: boolean;
+  altRoute: string;
+};
 
 export type TitleProps = {
   logoStyle?: string;

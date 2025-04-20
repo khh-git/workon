@@ -8,11 +8,11 @@ import "./index.css";
 
 const root = createRoot(document.getElementById("root")!);
 root.render(
-  <Provider store={store}>
-    <AppContextProvider>
-      <BrowserRouter>
+  <BrowserRouter>
+    <Provider store={store}>
+      <AppContextProvider>
         <App />
-      </BrowserRouter>
-    </AppContextProvider>
-  </Provider>
+      </AppContextProvider>
+    </Provider>
+  </BrowserRouter>
 );
