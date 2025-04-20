@@ -62,24 +62,23 @@ const AuthProvider = ({ children }: ComponentCommonProps) => {
 
   const fetchUserProfile = async () => {
     const token = getItemInLocalStorage("token");
-    if (token) {
-      fetchUser(
-        token,
-        (response: AxiosResponse) => {
-          const { data } = response;
-          setUser(data);
-          setLoginInfo({
-            ...loginInfo,
-            isLoggedIn: true,
-            loginStatus: EStatus.Success,
-          });
-          navigate("/");
-        },
-        (error: unknown) => {
-          setLoginInfo({ ...loginInfo, loginStatus: EStatus.Failed });
-        }
-      );
-    }
+
+    fetchUser(
+      token ?? "",
+      (response: AxiosResponse) => {
+        const { data } = response;
+        setUser(data);
+        setLoginInfo({
+          ...loginInfo,
+          isLoggedIn: true,
+          loginStatus: EStatus.Success,
+        });
+        navigate("/");
+      },
+      (error: unknown) => {
+        setLoginInfo({ ...loginInfo, loginStatus: EStatus.Failed });
+      }
+    );
   };
 
   return (

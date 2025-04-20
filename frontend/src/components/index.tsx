@@ -4,6 +4,7 @@ import Card from "./Card";
 import Divider from "./Divider";
 import Icon from "./Icon";
 import Input from "./Input";
+import Layout from "./Layout";
 import Loader from "./Loader";
 import LogoText from "./LogoText";
 import Modal from "./Modal";
@@ -23,6 +24,7 @@ export {
   Divider,
   Icon,
   Input,
+  Layout,
   Loader,
   LogoText,
   Modal,
