@@ -21,9 +21,9 @@ userRouter.post("/join", async (req, res, next) => {
   }
 
   const passwordHash = await hash(password, 12);
-  const newUser = await createUser(username, passwordHash, email);
+  await createUser(username, passwordHash, email);
 
-  res.send(newUser);
+  res.send({ message: "login sucessfull" });
 });
 
 userRouter.post("/getin", async (req, res, next) => {
@@ -47,11 +47,8 @@ userRouter.post("/getin", async (req, res, next) => {
 userRouter.get("/profile", isLoggedIn, async (req, res, next) => {
   const { userId } = req as IAuthorizationRequest;
   const user = await findUserById(userId);
-  if (!user) {
-    next(new Error("invalid user with token"));
-  }
 
-  res.send({ email: user?.email, username: user?.username });
+  res.send({ userId: user?._id, email: user?.email, username: user?.username });
 });
 
 export default userRouter;

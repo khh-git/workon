@@ -5,11 +5,7 @@ const listRouter = Router();
 
 listRouter.get("/:userId/lists", async (req, res, next) => {
   const { userId } = req.params;
-  const lists = await findListsByUserId(userId);
-
-  if (!lists) {
-    next(new Error("invalid lists"));
-  }
+  const lists = await findListsByUserId(userId, "_id, title");
 
   res.send(lists);
 });
@@ -20,7 +16,7 @@ listRouter.post("/:userId/lists", async (req, res, next) => {
 
   const newList = await createList(title, userId);
 
-  res.send(newList);
+  res.send({ message: "created successfully" });
 });
 
 export default listRouter;
