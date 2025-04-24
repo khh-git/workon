@@ -17,7 +17,7 @@ export type ButtonProps = ComponentType<{
 export type BoxProps = ComponentCommonProps;
 
 export type CardProps = ComponentType<{
-  id: number;
+  id: string;
   draggable: boolean;
 }>;
 

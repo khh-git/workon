@@ -8,9 +8,9 @@ const Layout = ({ children }: ComponentCommonProps) => {
   const { isLoggedIn } = useContext(AuthContext);
 
   return (
-    <>
+    <div className="flex flex-col items-center h-dvh">
       {isLoggedIn && (
-        <header>
+        <header className="sticky top-0 bg-white ">
           <NavBar>
             <LogoText
               icon={brandLogo}
@@ -25,7 +25,7 @@ const Layout = ({ children }: ComponentCommonProps) => {
       )}
       <main className={!isLoggedIn ? "bg-gray-100 " : ""}>{children}</main>
       {isLoggedIn && <footer></footer>}
-    </>
+    </div>
   );
 };
 

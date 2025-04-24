@@ -5,7 +5,7 @@ const Card = ({ children, style, draggable = false, id }: CardProps) => {
     <div
       className={`${style} flex flex-col rounded-md shadow p-2`}
       draggable={draggable}
-      id={id.toString()}
+      id={id}
     >
       {children}
     </div>

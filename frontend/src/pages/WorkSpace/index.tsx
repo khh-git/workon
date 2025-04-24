@@ -3,11 +3,7 @@ import { Box, Loader } from "@components";
 import { EntrySection, WorkList } from "./components";
 import { createList, getLists } from "@api/list";
 import { AuthContext } from "@contexts/AuthContext";
-
-type TList = {
-  _id: string;
-  title: string;
-};
+import { TCard, TList } from "@typelib/apiResponce";
 
 const WorkSpace = () => {
   const { user } = useContext(AuthContext);
@@ -15,31 +11,43 @@ const WorkSpace = () => {
   const [inPending, setInPending] = useState(true);
 
   useEffect(() => {
-    getUserLists();
-  }, []);
-
-  const getUserLists = () => {
     getLists(user.userId, (responce) => {
       const { data } = responce;
       setWorkLists(data);
       setInPending(false);
     });
-  };
+  }, []);
 
   const addList = (text: string) => {
     if (text != "") {
-      setInPending(true);
       createList(text, user.userId, (response) => {
-        getUserLists();
+        const { newList } = response.data;
+        const { _id, title, cards } = newList;
+        setWorkLists((prev) => [...prev, { _id, title, cards }]);
       });
     }
   };
 
+  const addCardSuccess = (listId: string, card: TCard) => {
+    workLists.forEach((list, index, arr) => {
+      if (list._id === listId) {
+        arr[index].cards.push(card);
+      }
+    });
+    setWorkLists([...workLists]);
+  };
+
   return !inPending ? (
-    <Box style="flex gap-4 *:w-[245px] **:h-fit *:px-2 *:shrink-0 h-full overflow-x-auto overflow-y-hidden">
+    <Box style="flex gap-4 *:w-[245px] **:h-fit *:px-2 *:shrink-0 h-full overflow-x-scroll ">
       {workLists &&
-        workLists.map(({ _id, title }: TList) => (
-          <WorkList key={_id} title={title} cards={[]} />
+        workLists.map(({ _id, title, cards }: TList) => (
+          <WorkList
+            key={_id}
+            listId={_id}
+            title={title}
+            cards={cards}
+            onAddCardSuccess={(card) => addCardSuccess(_id, card)}
+          />
         ))}
       <EntrySection
         entryButtonLabel="Add a List"
