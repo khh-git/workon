@@ -1,6 +1,6 @@
-import { Navigate, Route, Routes } from "react-router";
-import { GetIn, Join, WorkSpace } from "@pages";
-import { Box, Layout, Loader, PrivateRoute } from "@components";
+import { Route, Routes } from "react-router";
+import { GetIn, Home, Join, WorkSpace } from "@pages";
+import { Layout, Loader, PrivateRoute } from "@components";
 import { useContext } from "react";
 import { AuthContext } from "@contexts/AuthContext";
 import { EStatus } from "@typelib/contexts";
@@ -11,23 +11,22 @@ const App = () => {
   return loginStatus !== EStatus.None ? (
     <Layout>
       <Routes>
-        <Route path="/" element={<Navigate to="/workspace" replace />} />
-        <Route path="/getin" element={<GetIn />} />
-        <Route path="/join" element={<Join />} />
+        <Route path="/" element={<Home />} />
         <Route
           element={
-            <PrivateRoute isAuthenticated={isLoggedIn} altRoute="getin" />
+            <PrivateRoute isAuthenticated={!isLoggedIn} altRoute="/workspace" />
           }
         >
-          <Route
-            index
-            path="workspace"
-            element={
-              <Box style="h-dvh flex flex-col">
-                <WorkSpace />
-              </Box>
-            }
-          />
+          <Route path="/getin" element={<GetIn />} />
+          <Route path="/join" element={<Join />} />
+        </Route>
+
+        <Route
+          element={
+            <PrivateRoute isAuthenticated={isLoggedIn} altRoute="/getin" />
+          }
+        >
+          <Route path="/workspace" element={<WorkSpace />} />
         </Route>
       </Routes>
     </Layout>

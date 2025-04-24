@@ -10,6 +10,12 @@ export const ListSchema = new Schema(
       type: Schema.Types.ObjectId,
       index: true,
     },
+    cards: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Card",
+      },
+    ],
   },
   { timestamps: true, versionKey: false }
 );

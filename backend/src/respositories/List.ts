@@ -1,14 +1,16 @@
 import { ListModel } from "../models/List";
 
-const createList = (title: string, userId: string) => {
+export const createList = (title: string, userId: string) => {
   return ListModel.create({ title, user_id: userId });
 };
 
-const findListsByUserId = (
+export const findListById = (listId: string) => {
+  return ListModel.findOne({ _id: listId });
+};
+
+export const findListsByUserId = (
   userId: string,
-  projection: object | string | string[]
+  projection?: object | string | string[]
 ) => {
   return ListModel.find({ user_id: userId }, projection);
 };
-
-export { createList, findListsByUserId };

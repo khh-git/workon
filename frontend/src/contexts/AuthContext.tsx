@@ -51,6 +51,7 @@ const AuthProvider = ({ children }: ComponentCommonProps) => {
         const { data } = responce;
         setItemInLocalStorage("token", `Bearer ${data.token}`);
         fetchUserProfile();
+        navigate("/");
       },
       (error: unknown) => {
         setLoginInfo({ ...loginInfo, loginStatus: EStatus.Failed });
@@ -73,7 +74,6 @@ const AuthProvider = ({ children }: ComponentCommonProps) => {
           isLoggedIn: true,
           loginStatus: EStatus.Success,
         });
-        navigate("/");
       },
       (error: unknown) => {
         setLoginInfo({ ...loginInfo, loginStatus: EStatus.Failed });
