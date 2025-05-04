@@ -2,6 +2,7 @@ import brandLogo from "./logo.svg";
 import commentsIcon from "./comments.svg";
 import cross from "./cross.svg";
 import crossCircleIcon from "./cross-circle.svg";
+import deleteIcon from "./delete.svg";
 import descriptionIcon from "./description.svg";
 import downIcon from "./down-arrow.svg";
 import exclaimationIcon from "./exclamation-triangle.svg";
@@ -9,6 +10,7 @@ import fbLogo from "./facebook.png";
 import helpIcon from "./help.svg";
 import googleLogo from "./google.png";
 import loader from "./loader.svg";
+import menudots from "./menudots.svg";
 import msLogo from "./microsoft.png";
 import plusCircleIcon from "./plus-circle.svg";
 import searchIcon from "./search.svg";
@@ -22,6 +24,7 @@ export {
   commentsIcon,
   cross,
   crossCircleIcon,
+  deleteIcon,
   descriptionIcon,
   downIcon,
   exclaimationIcon,
@@ -29,6 +32,7 @@ export {
   helpIcon,
   loader,
   googleLogo,
+  menudots,
   msLogo,
   plusCircleIcon,
   searchIcon,

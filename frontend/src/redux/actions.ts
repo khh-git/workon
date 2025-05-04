@@ -1,3 +1,7 @@
-import { addNewList } from "./worklistSlice";
+import {
+  addListAction,
+  updateListAction,
+  deleteListAction,
+} from "./worklistSlice";
 
-export { addNewList };
+export { addListAction, updateListAction, deleteListAction };

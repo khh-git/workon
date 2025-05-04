@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { ModalProps } from "@typelib/components";
 import { ClickAwayContext } from "@contexts/ClickAwayContext";
 
-const Modal = ({ open, onClose, children }: ModalProps) => {
+const Modal = ({ style, open, onClose, children }: ModalProps) => {
   const { addClickAwayCallback, removeClickAwayCallback } =
     useContext(ClickAwayContext);
 
@@ -24,6 +24,7 @@ const Modal = ({ open, onClose, children }: ModalProps) => {
           onClick={(e) => {
             e.stopPropagation();
           }}
+          className={style}
         >
           {children}
         </div>

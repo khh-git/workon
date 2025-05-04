@@ -10,7 +10,7 @@ main {
 
 @layer components {
   .button-default {
-    @apply p-1 rounded-sm hover:bg-gray-100 h-8;
+    @apply p-1 rounded-sm hover:bg-gray-100 w-full;
   }
 
   .icon-default {
@@ -27,7 +27,7 @@ main {
 
   .tooltip-default {
     @apply hidden md:block pointer-events-none;
-    @apply opacity-0 px-1.5 py-px absolute top-[115%] left-1/2 -translate-x-1/2 text-xs bg-gray-600 text-white font-semibold rounded-sm;
+    @apply opacity-0 whitespace-nowrap px-1.5 py-px absolute top-[115%] left-1/2 -translate-x-1/2 text-xs bg-gray-600 text-white rounded-sm;
     @apply transition-[top] duration-100 ease-in group-hover:opacity-100 group-hover:top-[125%];
   }
 
