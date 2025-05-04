@@ -14,3 +14,7 @@ export const findListsByUserId = (
 ) => {
   return ListModel.find({ user_id: userId }, projection);
 };
+
+export const deleteListById = (listId: string) => {
+  return ListModel.deleteOne({ _id: listId });
+};

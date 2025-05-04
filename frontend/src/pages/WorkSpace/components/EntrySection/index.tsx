@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Button, LogoText, Modal, TextEntryForm } from "@components";
+import { Box, Button, LogoText, Modal, TextEntryForm } from "@components";
 import { plusCircleIcon } from "@assets";
 import { EntrySectionProps } from "@typelib/components";
 
 const EntrySection = ({
+  style,
   entryButtonLabel,
   entryButtonStyle,
   entryFormStyle,
@@ -25,7 +26,7 @@ const EntrySection = ({
   };
 
   return (
-    <>
+    <Box style={style}>
       {!showForm && (
         <Button
           style={`flex gap-3 items-center ${entryButtonStyle}`}
@@ -47,7 +48,7 @@ const EntrySection = ({
           textAreaPlaceholder={textAreaPlaceholder}
         />
       </Modal>
-    </>
+    </Box>
   );
 };
 

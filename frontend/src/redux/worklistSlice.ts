@@ -12,12 +12,15 @@ const worklistSlice = createSlice({
   name: "worklist",
   initialState: init,
   reducers: {
-    addNewList: (state, action) => {
+    addListAction: (state, action) => {
       state.push({ id: generateID(), title: action.payload });
     },
+    updateListAction: (state, action) => {},
+    deleteListAction: (state, action) => {},
   },
 });
 
-export const { addNewList } = worklistSlice.actions;
+export const { addListAction, updateListAction, deleteListAction } =
+  worklistSlice.actions;
 
 export default worklistSlice.reducer;

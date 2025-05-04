@@ -1,5 +1,9 @@
 import { Router } from "express";
-import { createList, findListsByUserId } from "../respositories/List";
+import {
+  createList,
+  findListsByUserId,
+  deleteListById,
+} from "../respositories/List";
 
 const listRouter = Router();
 
@@ -26,6 +30,14 @@ listRouter.post("/:userId/lists", async (req, res, next) => {
   const newList = await createList(title, userId);
 
   res.send({ newList, message: "created successfully" });
+});
+
+listRouter.delete("/lists/:listId", async (req, res, next) => {
+  const { listId } = req.params;
+
+  await deleteListById(listId);
+
+  res.send({ message: "deleted successfully" });
 });
 
 export default listRouter;

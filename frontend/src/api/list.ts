@@ -30,4 +30,19 @@ const createList = async (
   }
 };
 
-export { createList, getLists };
+const deleteList = async (
+  listId: string,
+  onSuccess?: (responce: AxiosResponse) => void,
+  onFailure?: (err: unknown) => void
+) => {
+  try {
+    const response = await axios.delete(
+      `http://localhost:5000/lists/${listId}`
+    );
+    onSuccess?.(response);
+  } catch (err) {
+    onFailure?.(err);
+  }
+};
+
+export { createList, getLists, deleteList };

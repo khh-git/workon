@@ -1,18 +1,16 @@
 import { ReactNode } from "react";
-import { EStatus } from "@typelib/contexts";
 
 export type ComponentCommonProps = {
   children?: ReactNode;
   style?: string;
+  onClick?: () => void;
 };
 
 type ComponentType<T> = {
   [K in keyof T]: T[K];
 } & ComponentCommonProps;
 
-export type ButtonProps = ComponentType<{
-  onClick?: Function;
-}>;
+export type ButtonProps = ComponentCommonProps;
 
 export type BoxProps = ComponentCommonProps;
 

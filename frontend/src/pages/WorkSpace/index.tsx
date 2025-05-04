@@ -28,6 +28,15 @@ const WorkSpace = () => {
     }
   };
 
+  const onDeleteListSuccess = (listId: string) => {
+    workLists.forEach((list, index, arr) => {
+      if (list._id === listId) {
+        arr.splice(index, 1);
+      }
+    });
+    setWorkLists([...workLists]);
+  };
+
   const addCardSuccess = (listId: string, card: TCard) => {
     workLists.forEach((list, index, arr) => {
       if (list._id === listId) {
@@ -38,7 +47,7 @@ const WorkSpace = () => {
   };
 
   return !inPending ? (
-    <Box style="flex gap-4 *:w-[245px] **:h-fit *:px-2 *:shrink-0 h-full overflow-x-scroll ">
+    <Box style="flex gap-4  *:px-2 *:shrink-0 h-full overflow-x-scroll ">
       {workLists &&
         workLists.map(({ _id, title, cards }: TList) => (
           <WorkList
@@ -47,9 +56,11 @@ const WorkSpace = () => {
             title={title}
             cards={cards}
             onAddCardSuccess={(card) => addCardSuccess(_id, card)}
+            onDeleteListSuccess={(listId) => onDeleteListSuccess(listId)}
           />
         ))}
       <EntrySection
+        style="w-[245px]"
         entryButtonLabel="Add a List"
         entryButtonStyle="bg-gray-200 px-2 shadow"
         entryFormStyle="shadow"
